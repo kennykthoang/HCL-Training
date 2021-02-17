@@ -20,7 +20,7 @@ public class LongestIncreasingSubsequence
 		boolean validInput;
 		do{
 			System.out.println("Please input the ArrayList Size (Input 0 for a random size)");
-			System.out.println("Size: ");
+			System.out.print("Size: ");
 			String str = scan.nextLine();
 			try 
 			{

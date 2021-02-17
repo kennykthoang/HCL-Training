@@ -6,7 +6,7 @@ import java.lang.Math;
 public class Sequence 
 {
 	private int arraySize;
-	private int min = 0;
+	private int min = 1;
 	private int max = 100;
 	private ArrayList<Integer> sequence;
 	
