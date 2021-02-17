@@ -50,35 +50,61 @@ public class LongestIncreasingSubsequence
 		sequence.printSeq();
 		int start = 0;
 		int end = 0;
-		int temp = 0;
-		int tempLongestSeq = 0;
+		int current = 0;
+		int currentLongestSeq = 0;
 		int longestSeq = 0;
 		ArrayList<Integer> seq = sequence.getSequence();
-		
-		for(int i = 1; i< sequence.getSize(); i++) {
+		for(int i = 1; i < sequence.getSize(); i++) 
+		{
 			
-			if(seq.get(i) > seq.get(i-1)) 
+			if(seq.get(i) > seq.get(i-1) && currentLongestSeq == 0) 
 			{
-				if(tempLongestSeq == 0) 
-				{
-					temp = i;
-				}
-				tempLongestSeq++;				
+				current = i;
+				currentLongestSeq++;				
 			}
-			else if(tempLongestSeq > longestSeq) 
+			else if(seq.get(i) > seq.get(i-1))
 			{
-				start = temp;
-				longestSeq = tempLongestSeq;
-				tempLongestSeq = 0;
+				// Subsequence size increased, update length and current end of subsequence
+				currentLongestSeq++;
+			}
+			else if(currentLongestSeq > longestSeq)  // Found new longest subsequence
+			{
+				// Update start of the longest subsequence and longest subsequence size
+				start = current;
+				longestSeq = currentLongestSeq;
+				currentLongestSeq = 0;
 				end=i;
 			} 
-			else 
+			else
 			{
-				tempLongestSeq = 0;
+				currentLongestSeq = 0;
 			}
 		}
+		
+		/*  Fixes bug if last element is supposed to be included in subsequence the program outputs no subsequence found
+		 *  If the currentLongestSequence is longer than the longestSequence after exiting the for-loop then that means
+		 *  that the last element makes the currentLongestSequence the new longest. This also fixes the edge case
+		 *  that the randomly populated ArrayList is sorted in increasing order.
+		 */
+		if(currentLongestSeq > longestSeq)
+		{
+			start = current;
+			longestSeq = currentLongestSeq;
+			end = sequence.getSize();
+		}
+		
 		System.out.println("Finding Longest Subsequence...");
-		System.out.println("Starts at index: " + (start-1) +  "\nEnds at index: " + end);
-		System.out.println("Longest Subsequence: " + seq.subList(start-1, end));
+		
+		// Solves the problem if the first index is part of the subsequence
+		// if not it would cause an IndexOutOfBoundsException
+		if(start != 0)
+		{
+			System.out.println("Starts at index: " + (start-1) +  "\nEnds at index: " + (end-1));
+			System.out.println("Longest Subsequence: " + seq.subList(start-1, end));
+		}
+		else
+		{
+			System.out.println("No longest increasing subsequence found!");
+		}
 	}
 }

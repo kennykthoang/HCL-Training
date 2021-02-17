@@ -32,7 +32,7 @@ public class Sequence
 		
 		for(int i = 0; i < arraySize; i++) 
 		{
-			int random = (int) (Math.random() * ((max + 1) - min)) + min;
+			int random = (int) (Math.random() * ((max - min) + 1)) + min;
 			sequence.add(random);
 		}
 	}
