@@ -71,10 +71,10 @@ public class PetsServlet extends HttpServlet {
 	        		out.print("<h3>Please input an ID#.</h3>");
 	        		errorFlag = true;
 	        	}
-	        	else if(!str.matches("^[1-9]\\d*$"))
+	        	else if(!str.matches("^[-+]?[1-9]\\d*|0$"))
 	        	{
-	        		out.print("<h3 style=\"background-color:red\">Error! Invalid Input!.</h3>");
-	        		out.print("<h3>Please input valid numbers only.</h3>");
+	        		out.print("<h3 style=\"background-color:red\">Error! Invalid Input!</h3>");
+	        		out.print("<h3>Please input numbers only.</h3>");
 	        		errorFlag = true;
 	        	}
 	        	else
@@ -82,17 +82,26 @@ public class PetsServlet extends HttpServlet {
 	        		ResultSet rst = stmt.executeQuery("select count(*) from products");
 	        		
 	        		petid = Integer.parseInt(str);
-	        		while(rst.next())
+	        		if(petid < 1)
 	        		{
-	        			dbid = rst.getInt(1);
+	        			out.print("<h3 style=\"background-color:red\">Error! PetID is less than zero!</h3>");
+		        		out.print("<h3>Please input an ID greater than zero.</h3>");
+		        		errorFlag = true;
 	        		}
-	        		
-	        		if(petid > dbid)
+	        		else
 	        		{
-	        			errorFlag = true;
-	        			out.print("<h3 style=\"background-color:red\">Error! Pet ID# \"" + petid + "\" was not found!</h3>");
-	        			out.print("<h4> Pet ID# \"" + petid + "\" is greater than the total number of pets.");
-	        			out.print("<h4> There are currently " + dbid + " unique pets in the shop. </h4>");
+		        		while(rst.next())
+		        		{
+		        			dbid = rst.getInt(1);
+		        		}
+		        		
+		        		if(petid > dbid)
+		        		{
+		        			errorFlag = true;
+		        			out.print("<h3 style=\"background-color:red\">Error! Pet ID# \"" + petid + "\" was not found!</h3>");
+		        			out.print("<h4> Pet ID# \"" + petid + "\" is greater than the total number of pets.");
+		        			out.print("<h4> There are currently " + dbid + " unique pets in the shop. </h4>");
+		        		}
 	        		}
 	        	}
 	        	
