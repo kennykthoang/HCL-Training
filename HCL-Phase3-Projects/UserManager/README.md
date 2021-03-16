@@ -49,6 +49,14 @@ SQL to create the db_example database and springuser used in application.propert
  grant all on db_example.* to 'springuser'@'%'; -- Gives all privileges to the new user on the newly created database
  ```
 
+Optional SQL to create table
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`))
+
 Included SQL in data.sql under src/main/resources
 
  ```sql
