@@ -12,13 +12,13 @@ As a part of developing an ecommerce web application, the admin backend requires
 
 
 ### You must use the following:
- 
+
 
  *  Eclipse as the IDE
  *  Apache Tomcat as the web server (Embedded in jar is fine)
  *  Spring MVC with Hibernate, log4j, and MySQL Connector
 
- 
+
 
 ### Following requirements should be met:
 
@@ -38,7 +38,24 @@ Here is a potential list of JSPs for the project. (feel free to modify)
  * Edit form for User
  * Confirmation JSP
 
+ ## Suggested SQL
+
+SQL to create the db_example database and springuser used in application.properties
+
+ ```sql
+ CREATE DATABASE db_example;
+ create user 'springuser'@'%' identified by 'ThePassword'; -- Creates the user springuser
+ grant all on db_example.* to 'springuser'@'%'; -- Gives all privileges to the new user on the newly created database
+ ```
+
+Included SQL in data.sql under src/main/resources
+
+ ```sql
+
+ insert into users (email, name, password) values
+ ('someemail@someemailprovider.com', 'First', 'mypassword'), ('someemail@someemailprovider.com', 'Second', 'mypassword2'), ('sample1@email.com', 'sample_name1', 'password1'),('sample2@email.com', 'sample_name1', 'password2');
+ ```
+
 ### Info
 
  * Due Date: 2021-03-16
- 
