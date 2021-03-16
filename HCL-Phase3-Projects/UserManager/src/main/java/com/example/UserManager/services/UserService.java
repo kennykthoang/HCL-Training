@@ -47,5 +47,11 @@ public class UserService {
     	userRepository.save(usertoUpdate);
     }
 
+    public boolean validateUserID(int id)
+    {
+    	if(userRepository.findById(id).isPresent())
+    		return true;
+    	return false;
+    }
 
 }

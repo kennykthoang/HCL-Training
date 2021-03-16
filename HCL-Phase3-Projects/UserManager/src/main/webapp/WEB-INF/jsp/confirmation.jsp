@@ -12,7 +12,7 @@
 <h3>Update confirmed</h3>
 
 
-<a href="index">Return to main page</a>
+<a href="/">Return to main page</a>
 
 </body>
 </html>

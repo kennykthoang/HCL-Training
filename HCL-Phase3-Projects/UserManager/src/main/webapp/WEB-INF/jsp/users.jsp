@@ -23,7 +23,7 @@ table, th, td {
   </c:forEach>
 </table>
 
-<br style="line-height:8;">
+<br style="line-height:6;">
 <a href="/">Return to main page</a>
 </body>
 </html>
