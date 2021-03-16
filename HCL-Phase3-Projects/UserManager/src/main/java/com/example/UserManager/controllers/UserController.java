@@ -23,14 +23,13 @@ public class UserController {
 	private UserService userService;
 	
     Logger logger = LoggerFactory.getLogger(UserController.class);
-
-	
+    
 	@GetMapping("/users")
 	public String showUsers(ModelMap model) {
 		
 		
 		logger.info("Getting all Users");
-		Iterable<User> users = userService.GetAllUsers();
+		Iterable<User> users = userService.getAllUsers();
 		
 		logger.info("Passing users to view");
 	    model.addAttribute("users", users);    
@@ -56,13 +55,16 @@ public class UserController {
 //	}
 	
 	@PostMapping("/userid")
-	public ModelAndView processUserID(@RequestParam int id)
+	public ModelAndView processUserID(@RequestParam String id)
 	{
-		if(!userService.validateUserID(id))
+		if(id.isEmpty())
+			return new ModelAndView("error", "message", "Empty ID input!");
+		
+		if(!userService.validateUserID(Integer.parseInt(id)))
 		{
-			return new ModelAndView("error", "message", "User ID not found!");
+			return new ModelAndView("error", "message", "User ID \"" + id + "\" not found!");
 		}	
-		User user = userService.GetUserById(id);
+		User user = userService.getUserById(Integer.parseInt(id));
 		return new ModelAndView("update", "update", user);
 	}
 	
@@ -74,13 +76,13 @@ public class UserController {
 	
 	@PostMapping("/update")
 	public String updateUsers(@RequestParam int id, @RequestParam String name, @RequestParam String email, 
-			@RequestParam String Password)
+			@RequestParam String password)
 	{
-//		User user = userService.GetUserById(id);
-//		user.setName(name);
-//		user.setEmail(email);
-//		user.setPassword(Password);
-//		userService.UpdateUser(user);
+		User user = userService.getUserById(id);
+		user.setName(name);
+		user.setEmail(email);
+		user.setPassword(password);
+		userService.updateUser(user);
 		return "confirmation";
 	}
 }

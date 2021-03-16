@@ -19,39 +19,43 @@ public class UserService {
 	
 	
 
-    public Iterable<User> GetAllUsers()
+    public Iterable<User> getAllUsers()
     {
         return userRepository.findAll();
     }
 
 
-    public User GetUserByName(String name) {
+    public User getUserByName(String name) {
         User foundUser = userRepository.findByName(name);
         return foundUser;
     }
     
-    public User GetUserById(int id) {
+    public User getUserById(int id) {
     	Optional<User> foundUser = userRepository.findById(id);
     	
-    	
-    	//TODO: we need to decide how to handle a "Not Found" condition
+    	// Is unused, UserController redirects to error.jsp
+    	/*
     	
     	if (!foundUser.isPresent()) {
     		throw new UserNotFoundException();
     	}
     	
+    	*/
+    	
     	return(foundUser.get());
     }
     
-    public void UpdateUser(User usertoUpdate) {
+    public void updateUser(User usertoUpdate) {
     	userRepository.save(usertoUpdate);
     }
 
     public boolean validateUserID(int id)
     {
-    	if(userRepository.findById(id).isPresent())
-    		return true;
-    	return false;
+    	if(!userRepository.findById(id).isPresent())
+    	{
+    		return false;
+    	}
+    	return true;
     }
 
 }

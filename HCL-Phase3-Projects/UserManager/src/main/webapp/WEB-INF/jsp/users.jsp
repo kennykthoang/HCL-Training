@@ -11,7 +11,7 @@ table, th, td {
 <body>
 <h2>Users</h2>
 
-<table style="float:left">
+<table>
    <tr><th>ID</th><th>Name</th><th>Email</th><th>Password</th></tr>
    <c:forEach items="${users}" var="user" varStatus="count">
     <tr id="${count.index}">
