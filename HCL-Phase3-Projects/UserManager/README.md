@@ -30,13 +30,14 @@ As a part of developing an ecommerce web application, the admin backend requires
 
 #### JSP Pages
 
-Here is a potential list of JSPs for the project. (feel free to modify)
+Here is a list of JSPs for the project.
 
  * Index
  * Query User By ID
  * Error for Invalid User Id
  * Edit form for User
  * Confirmation JSP
+ * List of users
 
  ## Suggested SQL
 
