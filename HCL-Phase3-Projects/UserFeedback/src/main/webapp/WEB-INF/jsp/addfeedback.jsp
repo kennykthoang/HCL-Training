@@ -21,7 +21,7 @@ textarea#comments
   <label for="name">Name:</label><br>
   <input type="text" id="user" name="user"><br><br>
   <label for="rating">Rating:</label><br>
-  <input type="number" step="1" min="1" max="10" id="rating" name="rating"><br><br>
+  <input type="number" value = "1" step="1" min="1" max="10" id="rating" name="rating"><br><br>
   <label for="comment">Comments:</label><br>
   <!--<input type="text" id="comments" name="comments" rows = "4" cols="20"><br><br>-->
   <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Please be honest!"></textarea><br><br>

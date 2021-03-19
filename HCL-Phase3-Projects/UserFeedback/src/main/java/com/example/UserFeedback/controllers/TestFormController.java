@@ -36,6 +36,8 @@ public class TestFormController {
 			@RequestParam String comments)
 	{
 		Feedback fb = new Feedback();
+		if(!feedbackService.validateEmptyInput(user))
+			return new ModelAndView("error", "message", "422 - Unprocessable Entity");
 		fb.setUser(user);
 		fb.setRating(rating);
 		fb.setComments(comments);

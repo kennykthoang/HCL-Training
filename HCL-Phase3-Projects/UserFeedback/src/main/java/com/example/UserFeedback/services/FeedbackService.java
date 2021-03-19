@@ -30,4 +30,12 @@ public class FeedbackService {
 		return foundFeedback.get();
 	}
 	
+	public boolean validateEmptyInput(String user)
+	{
+		if(user.isEmpty() || user.trim().isEmpty())
+		{
+			return false;
+		}
+		return true;
+	}
 }
