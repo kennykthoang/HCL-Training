@@ -8,9 +8,14 @@
     <body>
         <h1>Hello!</h1>
         
+        <form action="users" method="get">
+        <input name="users" type="submit" value="View Users"/>
+        </form>
+        <br>
         <form action="logout" method="get">
         <input name="logout" type="submit" value="Log Out" />
         </form>
+        
         
     </body>
 </html>

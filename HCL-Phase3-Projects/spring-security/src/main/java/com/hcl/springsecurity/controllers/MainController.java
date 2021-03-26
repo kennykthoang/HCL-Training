@@ -2,7 +2,7 @@ package com.hcl.springsecurity.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,8 +35,12 @@ public class MainController {
     	return "hello";
     }
     @RequestMapping(value="/users", method = RequestMethod.GET)
-    public String users() {
-    	return "users";
+    public String users(ModelMap model) 
+    {
+		Iterable<User> users = userService.getAllUsers();
+	    model.addAttribute("users", users);    
+		
+	    return "users";
     }
     
     @RequestMapping(value="/error", method = RequestMethod.GET)
@@ -60,6 +64,11 @@ public class MainController {
         {    
 	        return new ModelAndView("error", "message", "422 - Unprocessable Entity");
         }
+    	
+    	if(userService.existsByUserName(username))
+    	{
+    		return new ModelAndView("error", "message", "Username already exists in system");
+    	}
     	
     	User user = new User(username, password);
     	userService.updateUser(user);

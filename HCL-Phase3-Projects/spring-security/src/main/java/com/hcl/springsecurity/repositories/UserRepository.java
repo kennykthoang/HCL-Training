@@ -9,5 +9,6 @@ import com.hcl.springsecurity.entities.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	Optional<User> findByUserName(String userName);
+	boolean existsByUserName(String userName);
 
 }
