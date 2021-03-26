@@ -1,0 +1,1 @@
+insert into users (active, password, roles, user_name) values (true, "password", "USER", "user")
