@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+body {
+  background-color: Lavender;
+}
+
+h2.hello-title {
+  color: white;
+}
+
+
+h2.index-title {
+  color: black;
+  text-align: center;
+  font-family: Tahoma;
+  font-size: 20px;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+a{
+	font-family: Tahoma;
+  	font-size: 14px;
+}
