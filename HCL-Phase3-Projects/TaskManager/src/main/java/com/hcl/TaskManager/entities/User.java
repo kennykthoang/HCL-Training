@@ -58,12 +58,12 @@ public class User {
         this.name = name;
     }
     
-    public String getUserName() {
+    public String getUsername() {
 		return userName;
 	}
     
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.userName = username;
 	}
     
 	public boolean isActive() {

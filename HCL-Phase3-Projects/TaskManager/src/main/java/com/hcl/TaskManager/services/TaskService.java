@@ -21,15 +21,21 @@ public class TaskService {
 		return taskRepository.findAll();
 	}
 
-	public Optional<Task> getTaskById(Integer taskId) {
+	public Optional<Task> getTaskById(Integer taskId) throws Exception{
 		
 		//TODO: create exception for task not found.
+		if(!taskRepository.findById(taskId).isPresent())
+			throw new Exception("Task# " + taskId + " not found!");
 		return taskRepository.findById(taskId);
 	}
 	
 	public Iterable<Task> getTasksByUser(User user) {
 		//TODO: what do we do if the user doesn't have any tasks or doesn't exist?
 		
-		return(taskRepository.findAllByUser(user));
+		return (taskRepository.findAllByUser(user));
 	}
+	
+	public void updateTask(Task tasktoUpdate) {
+    	taskRepository.save(tasktoUpdate);
+    }
 }

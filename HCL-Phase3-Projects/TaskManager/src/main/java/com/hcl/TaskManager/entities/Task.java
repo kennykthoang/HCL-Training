@@ -29,7 +29,7 @@ public class Task {
 	   private User user;
 	   
 	   
-	public Task(String name, Date startDate, Date endDate, String severity, String description, String email,
+	public Task(String name, Date startDate, Date endDate, String severity, String description,
 			User user) {
 		super();
 		this.name = name;

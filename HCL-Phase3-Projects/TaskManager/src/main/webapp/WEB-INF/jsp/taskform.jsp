@@ -12,9 +12,9 @@
  <label for="name">Task name:</label><br>
   <input type="text" id="name" name="name"><br>
   <label for="sdate">Start Date:</label><br>
-  <input type="date" id="sdate" name="sdate"><br>
+  <input type="date" id="sdate" name="sdate" required><br>
   <label for="edate">End Date:</label><br>
-  <input type="date" id="edate" name="edate"><br>
+  <input type="date" id="edate" name="edate" required><br>
   <label for="desc">Description:</label><br>
   <textarea id="desc" name="desc" rows=10 cols=30></textarea><br>
   <label for="sev">Severity:</label><br>

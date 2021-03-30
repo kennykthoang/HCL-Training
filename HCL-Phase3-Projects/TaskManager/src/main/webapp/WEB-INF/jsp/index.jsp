@@ -1,9 +1,9 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>Task Manager Application</title>
 
 <link rel="stylesheet" href="stylesheet.css">
-
 
 </head>
 <body>
