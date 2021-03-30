@@ -118,7 +118,7 @@ public class TaskController {
 		Iterable<Task> tasks = taskService.getTasksByUser(user);
 //		Iterable<Task> tasks = taskService.getAllTasks();
 	    model.addAttribute("tasks", tasks);
-		return "selectupdatetask";
+		return "updatetaskselect";
 	}
 	
 	@PostMapping("/task-update-select")
@@ -133,12 +133,12 @@ public class TaskController {
 		if(id.isEmpty())
 		{
 			model.addAttribute("message", "Empty ID input!");
-			return "error";
+			return "taskerror";
 		}
 		if(!taskService.validateTaskID(Integer.parseInt(id)))
 		{
 			model.addAttribute("message", "Task ID \"" + id + "\" not found!");
-			return "error";
+			return "taskerror";
 		}	
 		Optional<Task> task = null;
 		try {
@@ -210,10 +210,75 @@ public class TaskController {
 		
 		model.addAttribute("sDate", sd);
 		model.addAttribute("eDate", ed);
-		model.addAttribute("action", "creation");
+		model.addAttribute("action", "update");
 		model.addAttribute("task", task);
 		model.addAttribute("user", task.getUser());
 		return "tasksuccess";
 	}
 	
+	@GetMapping("/task-delete")
+	public String showTaskDelete(ModelMap model)
+	{
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		String username = ((MyUserDetails) principal).getUsername();
+		User user = userService.getUserByUserName(username);
+		Iterable<Task> tasks = taskService.getTasksByUser(user);
+//		Iterable<Task> tasks = taskService.getAllTasks();
+	    model.addAttribute("tasks", tasks);
+		return "deletetask";
+	}
+	
+	@PostMapping("/task-delete")
+	public String processTaskDelete(@RequestParam String id, ModelMap model)
+	{
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		String username = ((MyUserDetails) principal).getUsername();
+		User user = userService.getUserByUserName(username);
+		
+		if(id.isEmpty())
+		{
+			model.addAttribute("message", "Empty ID input!");
+			return "taskerror";
+		}
+		
+		// Check for valid ID number
+		if(!taskService.validateTaskID(Integer.parseInt(id)))
+		{
+			model.addAttribute("message", "Could not find Task# " + id);
+			return "taskerror";
+		}
+		
+		Optional<Task> task = null;
+		try {
+			task = taskService.getTaskById(Integer.parseInt(id));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			model.addAttribute("message", e.toString());
+			return "error";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			model.addAttribute("message", e.toString());
+			return "error";
+		}
+		
+		// Check that the selected task belongs to logged in user
+		if(!task.get().getUser().getId().equals(user.getId()))
+		{
+			model.addAttribute("message", "Could not find Task# " + id);
+			return "taskerror";
+		}
+		
+		String sd = DateFormat.getDateInstance().format(task.get().getStartDate());
+		String ed = DateFormat.getDateInstance().format(task.get().getEndDate());
+		
+		model.addAttribute("sDate", sd);
+		model.addAttribute("eDate", ed);
+		model.addAttribute("action", "deletion");
+		model.addAttribute("task", task.get());
+		model.addAttribute("user", task.get().getUser());
+		taskService.deleteTask(task.get());
+		return "tasksuccess";
+	}
 }

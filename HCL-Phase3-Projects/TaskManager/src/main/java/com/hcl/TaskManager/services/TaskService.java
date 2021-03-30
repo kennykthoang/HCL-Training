@@ -17,12 +17,14 @@ public class TaskService {
 	@Autowired
 	private TaskRepository taskRepository;
 	
-	public Iterable<Task> getAllTasks() {
+	public Iterable<Task> getAllTasks() 
+	{
 	
 		return taskRepository.findAll();
 	}
 
-	public Optional<Task> getTaskById(Integer taskId) throws Exception{
+	public Optional<Task> getTaskById(Integer taskId) throws Exception
+	{
 		
 		//TODO: create exception for task not found.
 		if(!taskRepository.findById(taskId).isPresent())
@@ -30,15 +32,22 @@ public class TaskService {
 		return taskRepository.findById(taskId);
 	}
 	
-	public Iterable<Task> getTasksByUser(User user) {
+	public Iterable<Task> getTasksByUser(User user) 
+	{
 		//TODO: what do we do if the user doesn't have any tasks or doesn't exist?
 		
 		return (taskRepository.findAllByUser(user));
 	}
 	
-	public void updateTask(Task tasktoUpdate) {
-    	taskRepository.save(tasktoUpdate);
+	public void updateTask(Task tasktoUpdate) 
+	{
+		taskRepository.save(tasktoUpdate);
     }
+	
+	public void deleteTask(Task tasktoUpdate)
+	{
+		taskRepository.delete(tasktoUpdate);
+	}
 	
 	public boolean checkTaskDates(Date sDate, Date eDate)
 	{
@@ -47,7 +56,7 @@ public class TaskService {
 		return true;
 	}
 	
-	 public boolean validateEmptyInput(String input)
+	public boolean validateEmptyInput(String input)
 	{
 		if(input.isEmpty() || input.trim().isEmpty())
 		{
@@ -56,7 +65,7 @@ public class TaskService {
 		return true;
 	}
 	 
-	 public boolean validateTaskID(int id)
+	public boolean validateTaskID(int id)
     {
     	if(!taskRepository.findById(id).isPresent())
     	{
