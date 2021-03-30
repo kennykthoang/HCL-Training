@@ -8,7 +8,7 @@
 </head>
 <body>
 	Task ${action} was successful!<br><br>
-	Registration Details: <br>
+	Task Details: <br>
 	Name: ${task.name}<br>
 	<!-- Following prints out the dates as a formatted string -->
 	Start Date: ${sDate}<br>

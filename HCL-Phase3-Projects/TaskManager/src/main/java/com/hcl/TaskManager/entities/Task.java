@@ -14,8 +14,6 @@ import java.util.Date;
 @Entity
 @Table(name = "tasks")
 public class Task {
-
-	
 	@Id
 	   @GeneratedValue(strategy=GenerationType.IDENTITY)
 	   private Integer id;
@@ -38,6 +36,12 @@ public class Task {
 		this.severity = severity;
 		this.description = description;
 		this.user = user;
+	}
+	
+	// Empty Constructor
+	public Task() 
+	{
+		
 	}
 
 	public Integer getId() {

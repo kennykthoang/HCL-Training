@@ -1,5 +1,6 @@
 package com.hcl.TaskManager.services;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,30 @@ public class TaskService {
 	
 	public void updateTask(Task tasktoUpdate) {
     	taskRepository.save(tasktoUpdate);
+    }
+	
+	public boolean checkTaskDates(Date sDate, Date eDate)
+	{
+		if(sDate.after(eDate))
+			return false;
+		return true;
+	}
+	
+	 public boolean validateEmptyInput(String input)
+	{
+		if(input.isEmpty() || input.trim().isEmpty())
+		{
+			return false;
+		}
+		return true;
+	}
+	 
+	 public boolean validateTaskID(int id)
+    {
+    	if(!taskRepository.findById(id).isPresent())
+    	{
+    		return false;
+    	}
+    	return true;
     }
 }

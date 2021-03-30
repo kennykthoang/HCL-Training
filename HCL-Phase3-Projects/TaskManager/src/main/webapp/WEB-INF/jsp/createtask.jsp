@@ -8,13 +8,11 @@
 </head>
 <body>
 
-<form action="task" method="post">
+<h3>Task Details:</h3>
+
+<form action="task-create" method="post">
  <label for="name">Task name:</label><br>
   <input type="text" id="name" name="name"><br>
-  <label for="sdate">Start Date:</label><br>
-  <input type="date" id="sdate" name="sdate" required><br>
-  <label for="edate">End Date:</label><br>
-  <input type="date" id="edate" name="edate" required><br>
   <label for="desc">Description:</label><br>
   <textarea id="desc" name="desc" rows=10 cols=30></textarea><br>
   <label for="sev">Severity:</label><br>
@@ -23,6 +21,10 @@
   	<option value="medium">Medium</option>
   	<option value="low">Low</option>
   </select>
+  <label for="sdate">Start Date:</label><br>
+  <input type="date" id="sdate" name="sdate" required><br>
+  <label for="edate">End Date:</label><br>
+  <input type="date" id="edate" name="edate" required><br>
   
   
   
