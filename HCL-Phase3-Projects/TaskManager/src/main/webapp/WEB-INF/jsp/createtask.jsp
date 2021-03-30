@@ -17,9 +17,9 @@
   <textarea id="desc" name="desc" rows=10 cols=30></textarea><br>
   <label for="sev">Severity:</label><br>
   <select id="sev" name="sev">
-  	<option value="high">High</option>
-  	<option value="medium">Medium</option>
-  	<option value="low">Low</option>
+  	<option value="High">High</option>
+  	<option value="Medium">Medium</option>
+  	<option value="Low">Low</option>
   </select>
   <label for="sdate">Start Date:</label><br>
   <input type="date" id="sdate" name="sdate" required><br>
