@@ -1,0 +1,72 @@
+body 
+{
+   background-color: Lavender;
+}
+
+p
+{
+   font-family: verdana;
+   font-size: 20px;
+}
+ 
+a.nav-link
+{
+   font-family: verdana;
+   font-size: 20px;
+}
+
+a.cta-button
+{
+   display: block; 
+   height: 100px; 
+   width: 300px; 
+   background: #606060; 
+   color: #ffffff; 
+   text-align: center; 
+   font-weight: bold; 
+   font-size: 300%; 
+   line-height: 100px; 
+   font-family: Verdana; 
+   border-radius: 20px; 
+   text-decoration: none;
+   align-items: center;
+   justify-content: center;
+   margin: 0 auto;
+}
+
+div
+{
+   padding-bottom: 10px;
+}
+
+#menu-nav
+{
+   bottom: 0;
+   height: 4 rem;
+   /* display: flex;*/
+   justify-content: center;
+}
+
+#page-container {
+   position: relative;
+   min-height: 100vh;
+ }
+
+#content-wrap
+{
+   padding-bottom: 2.5rem;
+}
+
+#footer
+{
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   height: 2.5rem; 
+}
+
+.carousel-inner img
+{
+   width: 100%;
+   height: 100%;
+}
