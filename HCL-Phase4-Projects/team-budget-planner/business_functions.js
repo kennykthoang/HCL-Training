@@ -55,7 +55,6 @@ function createTableFromJSON() {
         //TODO: Complete this
         //var tabCell = tr.insertCell(-1);
         //tabCell.innerHTML = '<button onclick="DeleteRow(' + myData[i].dealId + ')"> <img src="trashcan.png"> </button>'
-
     }
 
     // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
@@ -96,6 +95,18 @@ function deleteRow(dealId) {
         }
     }
     createTableFromJSON();
+}
+
+function deleteVendor()
+{
+    var vendorName = document.getElementById("clientName").value;
+    for(var i = 0; i < myData.length; i++)
+    {
+        if(myData[i].client_name === vendorName)
+        {
+            deleteRow(i);
+        }
+    }
 }
 
 function editBudget()

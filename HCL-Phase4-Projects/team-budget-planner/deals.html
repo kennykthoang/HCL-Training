@@ -17,6 +17,13 @@
             font-weight:bold;
         }
     </style>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+     rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+   <link href="css/main.css" rel="stylesheet">  
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.3.2.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
     <script src="business_functions.js"></script>
 
 
@@ -25,8 +32,26 @@
 <body onload="createTableFromJSON()">
     <div id="page-container">
         <div id="content-wrap">
+            <nav class="navbar navbar-expand-md">
+                <!-- <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button> -->
+                <div class="collapse navbar-collapse" id="main-navigation">
+                  <div class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="deals.html">Deals</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="budget.html">Budget</a>
+                    </li>
+                  </div>
+                </div>
+            </nav>
+            <H3>Manage Projects</H3>
             <p id="showData"></p>
-            <H3>Add New Deal</H3>
             <p id="newData"> 
                 <label>Client Name:</label><input type="text" required="required" id="clientNameInput" /><br />
                 <label>Project Name:</label><input type="text" required="required" id="projectNameInput" /><br />

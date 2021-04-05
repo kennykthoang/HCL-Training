@@ -1,12 +1,17 @@
 body 
 {
-   background-color: Lavender;
+   background-color: ghostwhite;
+}
+
+h3
+{
+   font-family: verdana;
 }
 
 p
 {
    font-family: verdana;
-   font-size: 20px;
+   font-size: 14px;
 }
  
 a.nav-link
