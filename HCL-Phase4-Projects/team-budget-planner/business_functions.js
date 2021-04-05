@@ -126,12 +126,22 @@ function editRow(dealId, newValue, fieldNumber)
 
 function showDealAdd()
 {
-    document.getElementById("addDealField").style.display = "block";
+    var visibility = document.getElementById("addDealField");
+
+    if(visibility.style.display == 'block')
+        visibility.style.display = 'none';
+    else
+        visibility.style.display = 'block';
 }
 
 function showDealEdit()
 {
-    document.getElementById("editDealField").style.display = "block";
+    var visibility = document.getElementById("editDealField");
+
+    if(visibility.style.display == 'block')
+        visibility.style.display = 'none';
+    else
+        visibility.style.display = 'block';
 }
 
 function editDeal()
@@ -148,29 +158,82 @@ function editDeal()
 
 function showDealDelete()
 {
-    document.getElementById("deleteDealField").style.display = "block";
+    var visibility = document.getElementById("deleteDealField");
+
+    if(visibility.style.display == 'block')
+        visibility.style.display = 'none';
+    else
+        visibility.style.display = 'block';
+}
+
+function deleteDeal()
+{
+    var dealId = parseInt(document.getElementById("clientIdInputDelete").value);
+    deleteRow(dealId);
+}
+
+function showVendorEdit()
+{
+    var visibility = document.getElementById("editVendorField");
+
+    if(visibility.style.display == 'block')
+        visibility.style.display = 'none';
+    else
+        visibility.style.display = 'block';
+}
+
+function editVendor()
+{
+    var vendorName = document.getElementById("vendorNameInputEdit").value;
+    var newVendorName = document.getElementById("newVendorNameInputEdit").value;
+
+    for(var i = 0; i < myData.length; i++)
+    {
+        if(myData[i].client_name === vendorName)
+        {
+            editRow(i, newVendorName, 0);
+        }
+    }
 }
 
 function showVendorDelete()
 {
-    document.getElementById("deleteVendorField").style.display = "block";
+    var visibility = document.getElementById("deleteVendorField");
+    if(visibility.style.display == 'block')
+        visibility.style.display = 'none';
+    else
+        visibility.style.display = 'block';
 }
 
 function deleteVendor()
 {
     var vendorName = document.getElementById("clientNameInputDelete").value;
+
+    var idArray = new Array();
+    var count = 0;
+
     for(var i = 0; i < myData.length; i++)
     {
         if(myData[i].client_name === vendorName)
         {
-            deleteRow(i);
+            idArray[count] = myData[i].dealId;
+            count++;
         }
+    }
+
+    for(var j = 0; j < idArray.length; j++)
+    {
+        deleteRow(idArray[j]);
     }
 }
 
 function showBudgetEdit()
 {
-    document.getElementById("editField").style.display = "block";
+    var visibility = document.getElementById("editField");
+    if(visibility.style.display == 'block')
+        visibility.style.display = 'none';
+    else
+        visibility.style.display = 'block';
 }
 
 function editBudget()

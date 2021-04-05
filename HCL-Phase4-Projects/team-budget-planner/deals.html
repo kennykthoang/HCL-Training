@@ -53,6 +53,15 @@
             <H3>Manage Projects</H3>
             <p id="showData"></p>
             <input type="button" onclick="showDealAdd()" value="Add Deal" />
+
+            <input type="button" onclick="showDealEdit()" value="Edit Deal" />
+
+            <input type="button" onclick="showDealDelete()" value="Delete Deal" />
+
+            <input type="button" onclick="showVendorEdit()" value="Edit Vendor" />
+
+            <input type="button" onclick="showVendorDelete()" value="Delete Vendor" />
+
             <div style="display:none" id="addDealField">
                 <p id="newData"> 
                     <label>Client Name:</label><input type="text" required="required" id="clientNameInput" /><br />
@@ -61,38 +70,43 @@
                     <label>Project Cost:</label><input type="number" required="required" id="projectCostInput" /><br />
                 </p>
 
-                <input type="button" onclick="addNewDeal()" value="Save" />
+                <input type="button" onclick="addNewDeal(), showDealAdd()" value="Save" />
             </div>
 
-            <input type="button" onclick="showDealEdit()" value="Edit Deal" />
             <div style="display:none" id="editDealField">
                 <p id="newData"> 
-                    <label>Client ID:</label><input type="number" required="required" id="clientIdInputEdit" min="0"/><br />
+                    <label>Deal ID:</label><input type="number" required="required" id="clientIdInputEdit" min="0"/><br />
                     <label>Client Name:</label><input type="text" required="required" id="clientNameInputEdit" /><br />
                     <label>Project Name:</label><input type="text" required="required" id="projectNameInputEdit" /><br />
                     <label>Project Manager:</label><input type="text" required="required" id="projectManagerInputEdit" /><br />
                 </p>
 
-                <input type="button" onclick="editDeal()" value="Save" />
+                <input type="button" onclick="editDeal(), showDealEdit()" value="Save" />
             </div>
 
-            <input type="button" onclick="showDealDelete()" value="Delete Deal" />
             <div style="display:none" id="deleteDealField">
                 <p id="newData"> 
-                    <label>Client ID:</label><input type="number" required="required" id="clientIdInputDelete" min="0"/><br />
-                    <label>Project Cost:</label><input type="number" required="required" id="projectCostInputDelete" min="0"/><br />
+                    <label>Deal ID:</label><input type="number" required="required" id="clientIdInputDelete" min="0"/><br />
                 </p>
 
-                <input type="button" onclick="deleteDeal()" value="Submit" />
+                <input type="button" onclick="deleteDeal(), showDealDelete()" value="Submit" />
             </div>
 
-            <input type="button" onclick="showVendorDelete()" value="Delete Vendor" />
+            <div style="display:none" id="editVendorField">
+                <p id="newData">
+                    <label>Client Name:</label><input type="text" required="required" id="vendorNameInputEdit" /><br />
+                    <label>New Client Name:</label><input type="text" required="required" id="newVendorNameInputEdit" /><br />
+                </p>
+
+                <input type="button" onclick="editVendor(), showVendorEdit()" value="Save" />
+            </div>
+
             <div style="display:none" id="deleteVendorField">
                 <p id="newData">
                     <label>Client Name:</label><input type="text" required="required" id="clientNameInputDelete" /><br />
                 </p>
 
-                <input type="button" onclick="deleteVendor()" value="Save" />
+                <input type="button" onclick="deleteVendor(), showVendorDelete()" value="Submit" />
             </div>
             
         </div>
