@@ -97,9 +97,68 @@ function deleteRow(dealId) {
     createTableFromJSON();
 }
 
+function editRow(dealId, newValue, fieldNumber)
+{
+    for(var i = 0; i < myData.length; i++)
+    {
+        if(myData[i].dealId === dealId)
+        {
+            switch(fieldNumber)
+            {
+                case 0:
+                    myData[i].client_name = newValue
+                    break;
+                case 1:
+                    myData[i].project_name = newValue
+                    break;
+                case 2:
+                    myData[i].project_manager = newValue
+                    break;
+                case 3:
+                    myData[i].project_cost = newValue;
+                    break;
+            }
+        }
+    }
+
+    createTableFromJSON();
+}
+
+function showDealAdd()
+{
+    document.getElementById("addDealField").style.display = "block";
+}
+
+function showDealEdit()
+{
+    document.getElementById("editDealField").style.display = "block";
+}
+
+function editDeal()
+{
+    var dealId = parseInt(document.getElementById("clientIdInputEdit").value);
+    var clientName = document.getElementById("clientNameInputEdit").value;
+    var projectName = document.getElementById("projectNameInputEdit").value;
+    var managerName = document.getElementById("projectManagerInputEdit").value;
+
+    editRow(dealId, clientName, 0);
+    editRow(dealId, projectName, 1);
+    editRow(dealId, managerName, 2);
+}
+
+function showDealDelete()
+{
+    document.getElementById("deleteDealField").style.display = "block";
+}
+
+function showVendorDelete()
+{
+    document.getElementById("deleteVendorField").style.display = "block";
+}
+
 function deleteVendor()
 {
-    var vendorName = document.getElementById("clientNameInput").value;
+    var vendorName = document.getElementById("clientNameInputDelete").value;
     for(var i = 0; i < myData.length; i++)
     {
         if(myData[i].client_name === vendorName)
@@ -109,7 +168,7 @@ function deleteVendor()
     }
 }
 
-function showEdit()
+function showBudgetEdit()
 {
     document.getElementById("editField").style.display = "block";
 }
@@ -117,23 +176,7 @@ function showEdit()
 function editBudget()
 {
     var dealId = parseInt(document.getElementById("clientIdInput").value);
-    var newProjectCost = document.getElementById("projectCostInput").value;
+    var newProjectCost = parseInt(document.getElementById("projectCostInput").value);
 
-    document.getElementById("clientIdInput").value = "";
-    document.getElementById("projectCostInput").value = "";
-
-    editRow(dealId, newProjectCost);
-}
-
-function editRow(dealId, newValue)
-{
-    for(var i = 0; i <myData.length; i++)
-    {
-        if(myData[i].dealId === dealId)
-        {
-            myData[i].project_cost = newValue;
-        }
-    }
-
-    createTableFromJSON();
+    editRow(dealId, newProjectCost, 3);
 }

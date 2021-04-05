@@ -51,10 +51,10 @@
 
             <H3>Project Budget</H3>
             <p id="showData"></p>
-            <input type="button" onclick="showEdit()" value="Edit Budget" />
+            <input type="button" onclick="showBudgetEdit()" value="Edit Budget" />
             <div style="display:none" id="editField">
                 <p id="newData"> 
-                    <label>Client ID:</label><input type="text" required="required" id="clientIdInput" /><br />
+                    <label>Client ID:</label><input type="number" required="required" id="clientIdInput" min="0"/><br />
                     <label>Project Cost:</label><input type="number" required="required" id="projectCostInput" min="0"/><br />
                 </p>
 
