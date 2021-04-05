@@ -2,7 +2,7 @@
 var myData = [
     {"dealId" : 0, "client_name" : "Microsoft", "project_name" : "Apollo Project", "project_manager" : "Mary", "project_cost" : 1000},
     {"dealId" : 1, "client_name" : "Intel", "project_name" : "Hermes Project", "project_manager" : "Bob", "project_cost" : 10000},
-    {"dealId" : 2, "client_name" : "Apple", "project_name" : "Zeus Project", "project_manager" : "Jane", "project_cost" : 100000},
+    {"dealId" : 2, "client_name" : "Apple", "project_name" : "Zeus Project", "project_manager" : "Jane", "project_cost" : 100000}
 ]
 
 
@@ -99,7 +99,7 @@ function deleteRow(dealId) {
 
 function deleteVendor()
 {
-    var vendorName = document.getElementById("clientName").value;
+    var vendorName = document.getElementById("clientNameInput").value;
     for(var i = 0; i < myData.length; i++)
     {
         if(myData[i].client_name === vendorName)
@@ -107,6 +107,11 @@ function deleteVendor()
             deleteRow(i);
         }
     }
+}
+
+function showEdit()
+{
+    document.getElementById("editField").style.display = "block";
 }
 
 function editBudget()
