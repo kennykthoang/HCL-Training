@@ -3,6 +3,12 @@ body
    background-color: ghostwhite;
 }
 
+h1
+{
+   font-family: verdana;
+   text-align: center;
+}
+
 h3
 {
    font-family: verdana;
@@ -42,14 +48,6 @@ a.cta-button
 div
 {
    padding-bottom: 10px;
-}
-
-#menu-nav
-{
-   bottom: 0;
-   height: 4 rem;
-   /* display: flex;*/
-   justify-content: center;
 }
 
 #page-container {
